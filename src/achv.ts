@@ -1,7 +1,7 @@
 import { User, Context, Session, difference, defineProperty, union, makeArray, Dict } from 'koishi'
 import { Show } from './utils'
 import {} from '@koishijs/plugin-admin'
-import {} from '@koishijs/plugin-mysql'
+import {} from '@koishijs/plugin-database-mysql'
 import Profile from './profile'
 import Rank from './rank'
 

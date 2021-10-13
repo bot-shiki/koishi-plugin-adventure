@@ -1,5 +1,5 @@
 import { Bot, User, Context, Session, Database, paramCase, camelCase, isInteger, Dict } from 'koishi'
-import {} from '@koishijs/plugin-mysql'
+import {} from '@koishijs/plugin-database-mysql'
 
 type ExtendedUser<T extends User.Field = User.Field> = Pick<User, T> & { _value: number }
 
@@ -33,7 +33,7 @@ namespace Rank {
     const { threshold = 0, key } = options
     add(id, { names, value, threshold, ...options })
     if (!key) return
-    Database.extend('mysql', ({ tables }) => {
+    Database.extend('database-mysql', ({ tables }) => {
       tables.user[key] = () => `IF(\
         ${typeof threshold === 'string' ? threshold : `${value} > ${threshold}`},\
         (SELECT COUNT(*) + 1 FROM \`user\` WHERE ${value} > (SELECT ${value} FROM \`user\` WHERE \`id\` = _user.id)),\

@@ -1,5 +1,5 @@
 import { User, Database, Context, Command, Argv, TableType, Tables, Dict, FieldCollector, defineEnumProperty } from 'koishi'
-import {} from '@koishijs/plugin-mysql'
+import {} from '@koishijs/plugin-database-mysql'
 import * as Koishi from 'koishi'
 import Achievement from './achv'
 
@@ -82,7 +82,7 @@ Tables.extend('user', {
 
 defineEnumProperty(User.Flag, 'noLeading', 1 << 3)
 
-Database.extend('mysql', ({ tables }) => {
+Database.extend('database-mysql', ({ tables }) => {
   tables.user.achvCount = () => 'list_length(`achievement`)'
 })
 
