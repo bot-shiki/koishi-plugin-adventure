@@ -8,7 +8,7 @@ declare module 'koishi' {
 }
 
 Command.prototype.checkTimer = function (this: Command, name, when) {
-  return this.userFields(['timers', 'usage']).check((argv) => {
+  return this.userFields(['timers', 'usage']).before((argv) => {
     if (when && !when(argv)) return
     const { user } = argv.session
     if (!checkTimer(name, user)) return
